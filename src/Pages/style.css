@@ -1,0 +1,45 @@
+.aspectwrapper {
+  display: inline-block !important; /* shrink to fit */
+  width: 150px !important; /* whatever width you like */
+  position: relative; /* so .content can use position: absolute */
+  overflow: hidden; /* hide the overflow */
+}
+
+.aspectwrapper::after {
+  display: block;
+  content: "";
+}
+
+.thumbnail {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0; /* follow the parent's edges */
+  padding: 1.5em;
+}
+
+.preview {
+  display: flex;
+  align-items: center;
+  margin: 1em 2em;
+  justify-content: space-between;
+  padding: 1em 5%;
+}
+
+.Title {
+  font-size: 18px;
+  font-weight: bold;
+  color: #000;
+}
+.Title::hover {
+  color: #509cff;
+}
+
+.dark .Title {
+  color: #fff;
+}
+
+a:link {
+  text-decoration: none;
+}
