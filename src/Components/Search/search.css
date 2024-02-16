@@ -1,0 +1,14 @@
+em {
+  color: red;
+  font-weight: bold;
+  background: black;
+}
+
+.search-result {
+  color: black;
+  margin-top: 10px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background: #f4f4f4;
+}

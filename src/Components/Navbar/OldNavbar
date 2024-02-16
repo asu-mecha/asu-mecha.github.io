@@ -1,0 +1,135 @@
+import "./Navbar.css";
+import logo_light from "../../assets/logo-black.png";
+import logo_dark from "../../assets/logo-white.png";
+import search_icon_light from "../../assets/search-w.png";
+import search_icon_dark from "../../assets/search-b.png";
+import toggle_icon_light from "../../assets/night.png";
+import toggle_icon_dark from "../../assets/day.png";
+import Search from "../Search/search";
+
+const Navbar = ({
+  theme,
+  setTheme,
+}: {
+  theme: string;
+  setTheme: (theme: string) => void;
+}) => {
+  const toggleTheme = () => {
+    setTheme(theme === "light" ? "dark" : "light");
+  };
+  const closeSidebar = () => {
+    const sidebar = document.querySelector(".sidebar") as HTMLElement;
+    sidebar.style.display = "none";
+  };
+
+  const openSidebar = () => {
+    const sidebar = document.querySelector(".sidebar") as HTMLElement;
+    sidebar.style.display = "flex";
+  };
+
+  return (
+    <div>
+      <nav className="navbar">
+        <img
+          src={theme == "light" ? logo_light : logo_dark}
+          alt="logo"
+          className="logo"
+          onClick={() => (window.location.href = "/")}
+        />
+
+        <ul className="hideonmobile">
+          <div className="searchbar">
+            <Search />
+            <img
+              src={theme == "light" ? search_icon_light : search_icon_dark}
+              alt="search"
+            />
+          </div>
+          <li>
+            <a href="/#">Home</a>
+          </li>
+          <li>
+            <a href="/#/courses">Courses</a>
+          </li>
+          <li>
+            <a href="/#/feedback">Feedback</a>
+          </li>
+          <li>
+            <a>Login</a>
+          </li>
+          <li>
+            <a href="/#/upload">Upload</a>
+          </li>
+          <img
+            onClick={() => toggleTheme()}
+            src={theme == "light" ? toggle_icon_light : toggle_icon_dark}
+            alt="toggle"
+            className="toggle"
+          />
+        </ul>
+        <li onClick={() => openSidebar()} className="menu-button">
+          <a>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              height="26"
+              viewBox="0 -960 960 960"
+              width="26"
+              fill={theme == "light" ? "black" : "white"}
+            >
+              <path d="M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z" />
+            </svg>
+          </a>
+        </li>
+
+        <ul className="sidebar">
+          <div className="toolbar">
+            <li className="sidebar-item" onClick={() => closeSidebar()}>
+              <a>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  height="26"
+                  viewBox="0 -960 960 960"
+                  width="26"
+                  fill={theme == "light" ? "black" : "white"}
+                >
+                  <path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z" />
+                </svg>
+              </a>
+            </li>
+            <img
+              onClick={() => toggleTheme()}
+              src={theme == "light" ? toggle_icon_light : toggle_icon_dark}
+              alt="toggle"
+              className="toggle"
+            />
+          </div>
+          <div className="searchbar sidebar-item">
+            <input type="text" placeholder="Search" />
+            <img
+              src={theme == "light" ? search_icon_light : search_icon_dark}
+              alt="search"
+            />
+          </div>
+          <li className="sidebar-item">
+            <a href="/#">Home</a>
+          </li>
+          <li className="sidebar-item">
+            <a href="/#/courses">Courses</a>
+          </li>
+          <li className="sidebar-item">
+            <a href="/#/feedback">Feedback</a>
+          </li>
+          <li className="sidebar-item">
+            <a>Login</a>
+          </li>
+          <li className="sidebar-item">
+            <a href="/#/upload">Upload</a>
+          </li>
+        </ul>
+        <scroll-behavior />
+      </nav>
+    </div>
+  );
+};
+
+export default Navbar;
